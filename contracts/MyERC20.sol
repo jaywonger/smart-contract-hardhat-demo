@@ -24,9 +24,9 @@ contract MyERC20 is
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     constructor(
-        string memory name,
-        string memory symbol
-    ) ERC20(name, symbol) ERC20Permit(name) Ownable(_msgSender()) {
+        string memory TheDemoCRO,
+        string memory DCRO
+    ) ERC20(TheDemoCRO, DCRO) ERC20Permit(DCRO) Ownable(_msgSender()) {
         // Default initial supply of 1 million tokens (with 18 decimals)
         uint256 initialSupply = 1_000_000 * (10 ** 18);
 
