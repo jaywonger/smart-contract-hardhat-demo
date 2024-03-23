@@ -18,8 +18,8 @@ async function main() {
 
     const myContract = await hre.ethers.getContractFactory(contractName);
     const contractInstance = await myContract.deploy(
-        "My token name",
-        "My token symbol"
+        "TheDemoCRO",
+        "DCRO"
     );
 
     await contractInstance.waitForDeployment();
