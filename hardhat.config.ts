@@ -24,11 +24,6 @@ task("accounts", "Prints the list of accounts", async (args, hre) => {
 
 const config: HardhatUserConfig = {
     networks: {
-        hardhat: {},
-        ganache: {
-            url: "HTTP://127.0.0.1:7545",
-            accounts: [myPrivateKey],
-        },
         cronos: {
             url: "https://evm.cronos.org/",
             chainId: 25,
@@ -41,23 +36,13 @@ const config: HardhatUserConfig = {
             accounts: [myPrivateKey],
             gasPrice: 10100000000000,
         },
-        ethereumSepoliaTestnet: {
-            url: process.env.ETHEREUM_SEPOLIA_URL,
-            chainId: 11155111,
-            accounts: [myPrivateKey],
-        },
     },
     etherscan: {
         apiKey: {
-            mainnet: <string>process.env["ETHERSCAN_API_KEY"],
-            sepolia: <string>process.env["ETHERSCAN_API_KEY"],
             cronos: cronosApiKeyMainnet,
             cronosTestnet: cronosApiKeyTestnet,
         },
         customChains: [
-            // Note that the Cronos Explorer API requires the API Key to be part of the URL below as well,
-            // so it's not enough to just set the apiKey above.
-            // This is different from Etherscan, where the API Key is passed as a separate parameter.
             {
                 network: "cronos",
                 chainId: 25,
@@ -92,7 +77,7 @@ const config: HardhatUserConfig = {
     gasReporter: {
         currency: "USD",
         gasPrice: 5000, // In GWei
-        coinmarketcap: <string>process.env["COINMARKETCAP_API"],
+        coinmarketcap: process.env.COINMARKETCAP_API || "",
     },
     sourcify: {
         enabled: false,
@@ -100,4 +85,3 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
-
