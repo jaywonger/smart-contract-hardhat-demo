@@ -79,7 +79,7 @@ const config: HardhatUserConfig = {
         gasPrice: 5000, // In GWei
         coinmarketcap: process.env.COINMARKETCAP_API || "",
     },
-    sourcify: {
+    sourcify: { // plug-in tool used for verifying and publishing smart contract source code on block explorers
         enabled: false,
     },
 };
